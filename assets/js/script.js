@@ -42,6 +42,10 @@ function formSubmitCity (event) {
           console.log(data.main.temp);
           console.log(data.wind.speed);
           console.log(data.main.humidity);
+          document.getElementById('city-select').innerHTML = data.name;
+          document.getElementById('temp-select').innerHTML = "Temp: " + data.main.temp;
+          document.getElementById('wind-select').innerHTML = "Wind: " + data.wind.speed;
+          document.getElementById('humid-select').innerHTML = "Humidity: " + data.main.humidity;
           //displayRepos(data, user);
         });
       } else {
@@ -49,6 +53,29 @@ function formSubmitCity (event) {
       }
     })
    
+    let forecastURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&appid=" + APIKey;
+
+    fetch(forecastURL)
+
+    .then(function (response) {
+      if (response.ok) {
+        console.log(response);
+        response.json().then(function (data) {
+          console.log(data);
+          console.log(data.list[7].dt_txt);
+          console.log(data.list[7].main.temp);
+          console.log(data.list[7].wind.speed);
+          console.log(data.list[7].main.humidity);
+          document.getElementById('day1D').innerHTML = data.list[7].dt_txt;
+          document.getElementById('day1T').innerHTML = "Temp: " + data.list[7].main.temp;
+          document.getElementById('day1W').innerHTML = "Wind: " + data.list[7].wind.speed;
+          document.getElementById('day1H').innerHTML = "Humidity: " + data.list[7].main.humidity;
+          
+        });
+      } else {
+        alert('Error: ' + response.statusText);
+      }
+    })
 
    
 
