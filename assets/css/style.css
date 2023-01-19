@@ -45,7 +45,7 @@ h1 {
   
 }
 
-.search-input {
+.search-form {
   flex-direction: column;
   border: solid rgb(30, 255, 0);
   justify-content: center;
@@ -65,7 +65,8 @@ button, .city-search {
   border: solid rgb(212, 0, 255);
   justify-content: center;
   width: 100%;
-  margin: 5px;  
+  margin: 5px 0;  
+  padding: 5px;
 }
 
 .forecast {
@@ -73,7 +74,8 @@ button, .city-search {
   border: solid rgb(255, 140, 0);
   justify-content: center;
   width: 100%;
-  margin: 5px;
+  margin: 5px 0;
+  padding: 5px;
 }
 
 .days {
@@ -81,7 +83,7 @@ button, .city-search {
   border: solid rgb(255, 0, 183);
   justify-content: center;
   width: 100%;
-  margin: 5px;
+  margin: 5px 0;
 }
 
 .day-block {
@@ -90,6 +92,7 @@ button, .city-search {
   justify-content: center;
   width: 100%;
   margin: 5px;
+  padding: 5px;
 }
 
 @media screen and (max-width: 768px) {
