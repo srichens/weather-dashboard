@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  border: solid chocolate;
+}
+
+.container {
+  display: flex;
+  border: solid crimson;
+}
+
+.weather-output {
+  display: flex;
+  border: solid rgb(72, 215, 244);
+  flex-direction: column;
+  width: 75%;
+}
+
+
+.search {
+  flex-direction: column;
+  border: solid blue;
+  display: block;
+  text-align: center;
+  width: 25%;
+  margin: 5px;
+}
+
+.cities {
+  flex-direction: column;
+  border: solid rgb(30, 255, 0);
+  justify-content: center;
+  margin: 5px;
+  /*text-align: center;*/
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin: 5px;
+  /*text-align: center;*/
+}
+
+.current-city {
+  flex-direction: row;
+  border: solid rgb(212, 0, 255);
+  justify-content: center;
+  width: 100%;
+  margin: 5px;
+  /*text-align: center;*/
+}
+
+.forecast {
+  flex-direction: row;
+  border: solid rgb(255, 140, 0);
+  justify-content: center;
+  width: 100%;
+  margin: 5px;
+}
+
+.days {
+  display: flex;
+  border: solid rgb(255, 0, 183);
+  justify-content: center;
+  width: 100%;
+  margin: 5px;
+}
+
+.day-block {
+  flex-direction: row;
+  border: solid rgb(102, 255, 0);
+  justify-content: center;
+  width: 100%;
+  margin: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .day-block, .forecast, .current-city, .days {
+    flex-direction: column;
+    justify-items: center;     
+    text-align: center;
+    flex-wrap: wrap;
+  } 
+}    
