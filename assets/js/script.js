@@ -1,5 +1,6 @@
 let APIKey = "9d7113f3af5d25571785a917bd91f773";
-let city;
+let searchCity;
+
 let searchFormEl = document.querySelector('#search-input');
 let cityInputEl = document.querySelector('#city-input');
 let citiesListEl = document.querySelector('.cities');
@@ -12,7 +13,9 @@ searchFormEl.addEventListener('submit', formSubmitCity)
 function formSubmitCity (event) {
     event.preventDefault();
      
-    let searchCity = cityInputEl.value.trim();
+    searchCity = cityInputEl.value.trim();
+
+   
     
     console.log(searchCity);
    
@@ -26,19 +29,31 @@ function formSubmitCity (event) {
     cityButton.appendChild(cityBtnText);
     
     citiesListEl.appendChild(cityButton);}
-    //cityButton.setAttribute("name", "savedCity")
+
+    let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&appid=" + APIKey;
+
+    fetch(queryURL)
+
+    .then(function (response) {
+      if (response.ok) {
+        console.log(response);
+        response.json().then(function (data) {
+          console.log(data);
+          console.log(data.main.temp);
+          console.log(data.wind.speed);
+          console.log(data.main.humidity);
+          //displayRepos(data, user);
+        });
+      } else {
+        alert('Error: ' + response.statusText);
+      }
+    })
+   
 
    
 
   
   
-   /* if (username) {
-      getUserRepos(username);
-  
-      repoContainerEl.textContent = '';
-      nameInputEl.value = '';
-    } else {
-      alert('Please enter a GitHub username');
-    }*/
+   
   };
 
