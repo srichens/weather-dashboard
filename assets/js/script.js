@@ -48,8 +48,8 @@ function formSubmitCity (event) {
           console.log(fahrenheit);
           document.getElementById('city-select').innerHTML = data.name;
           document.getElementById('temp-select').innerHTML = "Temp: " + fahrenheit + '\u00B0' + ' F';
-          document.getElementById('wind-select').innerHTML = "Wind: " + data.wind.speed;
-          document.getElementById('humid-select').innerHTML = "Humidity: " + data.main.humidity;
+          document.getElementById('wind-select').innerHTML = "Wind: " + data.wind.speed + ' mph';
+          document.getElementById('humid-select').innerHTML = "Humidity: " + data.main.humidity + '%';
 
           
           
@@ -87,11 +87,11 @@ function formSubmitCity (event) {
           }
 
           for (i = 0; i < dayArray.length; i++) {            
-            document.getElementById('day' + [i] + 'W').innerHTML = "Wind: " + dayArray[i].wind.speed;
+            document.getElementById('day' + [i] + 'W').innerHTML = "Wind: " + dayArray[i].wind.speed + ' mph';
           }
 
           for (i = 0; i < dayArray.length; i++) {
-            document.getElementById('day' + [i] + 'H').innerHTML = "Humidity: " + dayArray[i].main.humidity;
+            document.getElementById('day' + [i] + 'H').innerHTML = "Humidity: " + dayArray[i].main.humidity + '%';
           }
 
 
