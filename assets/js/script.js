@@ -8,24 +8,9 @@ let citiesArr = [];
 let fahrenheit;
 let fahForecast;
 let today = dayjs();
-//let today = new Date();
-//console.log(today);
-$('#today-date').text(today.format('MMM D, YYYY'));
 
-/*let dayOneEl = getElementById('day0D').innerHTML
-dayOneEl = today++;*/
-/*let daysEl = document.querySelector('.days');
-console.log(daysEl.children[0].getAttribute('id'));
-let dayChildEl = daysEl.children[0].getAttribute('id');
-console.log(dayChildEl);
-let childDateEl = dayChildEl.children[0].innerHTML;
-console.log(childDateEl);*/
+$('#today-date').text('(' + today.format('MMM D, YYYY') + ')');
 
-/*for (let i = 0; i < 5; i++) {
-let nextDayArr = nextDayArr.push[i];
-let day[i] = new Date(today);
-day[i].setDate(day[i].getDate() + 1);
-}*/
 let d0 = new Date(today);
 d0.setDate(d0.getDate() + 1);
 console.log(d0);
@@ -138,9 +123,9 @@ function formSubmitCity (event) {
           let dayArray = [dayOne, dayTwo, dayThree, dayFour, dayFive];
           
 
-          for (i = 0; i < dayArray.length; i++) {
+          /*for (i = 0; i < dayArray.length; i++) {
             document.getElementById('day' + [i] + 'D').innerHTML = dayArray[i].dt_txt;  
-          }
+          }*/
 
           for (i = 0; i < dayArray.length; i++) {  
             fahForecast = Math.round(((parseFloat(dayArray[i].main.temp)-273.15)*1.8)+32);
