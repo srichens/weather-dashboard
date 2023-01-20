@@ -8,7 +8,15 @@ let citiesArr = [];
 let fahrenheit;
 let fahForecast;
 let today = dayjs();
-  $('#date').text(today.format('MMM D, YYYY'));
+  $('#today-date').text(today.format('MMM D, YYYY'));
+/*let dayOneEl = getElementById('day0D').innerHTML
+dayOneEl = today++;*/
+let daysEl = document.querySelector('.days');
+console.log(daysEl.children[0]);
+let nextDayArr = [];
+let dayOne = new Date(today);
+dayOne.setDate(dayOne.getDate() + 1);
+console.log(dayOne);
 
 
 

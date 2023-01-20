@@ -61,7 +61,9 @@ button, .city-search {
 }
 
 .current-city {
-  flex-direction: row;
+  display: flex;  
+  flex-direction: column;
+  /*align-items: flex-start;*/
   border: solid rgb(212, 0, 255);
   justify-content: center;
   width: 100%;
@@ -69,6 +71,26 @@ button, .city-search {
   padding: 5px;
 }
 
+#city-select, #today-date {
+  border: solid rgb(240, 8, 66);
+  text-align: center;
+  margin: 5px 0;  
+  padding: 5px;
+}
+
+#cur-weath {
+  border: solid rgb(34, 194, 34);
+  width: 50%;
+  margin: 5px 0;  
+  padding: 5px;
+}
+
+.curr-head{
+  border: solid rgb(215, 205, 15);
+  display: flex;
+  flex-wrap: wrap; 
+  width: 50%
+}
 .forecast {
   flex-direction: row;
   border: solid rgb(255, 140, 0);

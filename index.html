@@ -37,10 +37,15 @@
     <section class="weather-output">
 
       <section class="current-city">
-        <h2 id="city-select">[City] (<span id="date">[Date]</span>)</h2>
-        <p id="temp-select">Temp:</p>
-        <p id="wind-select">Wind:</p>
-        <p id="humid-select">Humidity:</p>
+        <header class="curr-head">
+          <h2 id="city-select" >[City]</h2> 
+          <h2 id="today-date" >[Date]</h2>
+        </header>
+        <section id="cur-weath">
+          <p id="temp-select">Temp:</p>
+          <p id="wind-select">Wind:</p>
+          <p id="humid-select">Humidity:</p>
+        </section>
       </section>
 
       <section class="forecast">    
@@ -50,7 +55,7 @@
 
         <section class="days">          
           <section id="day1" class="day-block">
-            <h3 id="day0D">[Date day 1]</h3>
+            <h3 id="day0D">[Date day 1]</h3>                        
             <p id="day0T">Temp:</p>
             <p id="day0W">Wind:</p>
             <p id="day0H">Humidity:</p>
