@@ -26,33 +26,50 @@ let nextDayArr = nextDayArr.push[i];
 let day[i] = new Date(today);
 day[i].setDate(day[i].getDate() + 1);
 }*/
-let day0 = new Date(today);
-day0.setDate(day0.getDate() + 1);
+let d0 = new Date(today);
+d0.setDate(d0.getDate() + 1);
+console.log(d0);
+let dateFormat0 = new Date(d0);
+let day0 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat0);
 console.log(day0);
 
-let day1 = new Date(today);
-day1.setDate(day1.getDate() + 2);
+let d1 = new Date(today);
+d1.setDate(d1.getDate() + 2);
+console.log(d1);
+let dateFormat1 = new Date(d1);
+let day1 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat1);
 console.log(day1);
 
-let day2 = new Date(today);
-day2.setDate(day2.getDate() + 3);
+let d2 = new Date(today);
+d2.setDate(d2.getDate() + 3);
+console.log(d2);
+let dateFormat2 = new Date(d2);
+let day2 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat2);
 console.log(day2);
 
-let day3 = new Date(today);
-day3.setDate(day3.getDate() + 4);
+let d3 = new Date(today);
+d3.setDate(d3.getDate() + 4);
+console.log(d3);
+let dateFormat3 = new Date(d3);
+let day3 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat3);
 console.log(day3);
 
-let day4 = new Date(today);
-day4.setDate(day4.getDate() + 5);
+let d4 = new Date(today);
+d4.setDate(d4.getDate() + 5);
+console.log(d4);
+let dateFormat4 = new Date(d4);
+let day4 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat4);
 console.log(day4);
 
 let nextDayArr = [day0, day1, day2, day3, day4];
 
-console.log(nextDayArr);
-
 for (i = 0; i < nextDayArr.length; i++) {
   document.getElementById('day' + [i] + 'D').innerHTML = nextDayArr[i];  
 }
+
+console.log(nextDayArr);
+
+
 
 
 searchFormEl.addEventListener('submit', formSubmitCity)
