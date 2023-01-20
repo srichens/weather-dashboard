@@ -7,6 +7,8 @@ let citiesListEl = document.querySelector('.cities');
 let citiesArr = [];
 let fahrenheit;
 let fahForecast;
+let today = dayjs();
+  $('#date').text(today.format('MMM D, YYYY'));
 
 
 
