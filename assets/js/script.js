@@ -8,16 +8,51 @@ let citiesArr = [];
 let fahrenheit;
 let fahForecast;
 let today = dayjs();
-  $('#today-date').text(today.format('MMM D, YYYY'));
+//let today = new Date();
+//console.log(today);
+$('#today-date').text(today.format('MMM D, YYYY'));
+
 /*let dayOneEl = getElementById('day0D').innerHTML
 dayOneEl = today++;*/
-let daysEl = document.querySelector('.days');
-console.log(daysEl.children[0]);
-let nextDayArr = [];
-let dayOne = new Date(today);
-dayOne.setDate(dayOne.getDate() + 1);
-console.log(dayOne);
+/*let daysEl = document.querySelector('.days');
+console.log(daysEl.children[0].getAttribute('id'));
+let dayChildEl = daysEl.children[0].getAttribute('id');
+console.log(dayChildEl);
+let childDateEl = dayChildEl.children[0].innerHTML;
+console.log(childDateEl);*/
 
+/*for (let i = 0; i < 5; i++) {
+let nextDayArr = nextDayArr.push[i];
+let day[i] = new Date(today);
+day[i].setDate(day[i].getDate() + 1);
+}*/
+let day0 = new Date(today);
+day0.setDate(day0.getDate() + 1);
+console.log(day0);
+
+let day1 = new Date(today);
+day1.setDate(day1.getDate() + 2);
+console.log(day1);
+
+let day2 = new Date(today);
+day2.setDate(day2.getDate() + 3);
+console.log(day2);
+
+let day3 = new Date(today);
+day3.setDate(day3.getDate() + 4);
+console.log(day3);
+
+let day4 = new Date(today);
+day4.setDate(day4.getDate() + 5);
+console.log(day4);
+
+let nextDayArr = [day0, day1, day2, day3, day4];
+
+console.log(nextDayArr);
+
+for (i = 0; i < nextDayArr.length; i++) {
+  document.getElementById('day' + [i] + 'D').innerHTML = nextDayArr[i];  
+}
 
 
 searchFormEl.addEventListener('submit', formSubmitCity)
