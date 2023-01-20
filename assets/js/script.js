@@ -43,7 +43,7 @@ function formSubmitCity (event) {
           console.log(data.wind.speed);
           console.log(data.main.humidity);
           document.getElementById('city-select').innerHTML = data.name;
-          document.getElementById('temp-select').innerHTML = "Temp: " + data.main.temp;
+          document.getElementById('temp-select').innerHTML = "Temp: " + data.main.temp + '\u00B0' + ' F';
           document.getElementById('wind-select').innerHTML = "Wind: " + data.wind.speed;
           document.getElementById('humid-select').innerHTML = "Humidity: " + data.main.humidity;
           //displayRepos(data, user);
@@ -74,7 +74,7 @@ function formSubmitCity (event) {
           }
 
           for (i = 0; i < dayArray.length; i++) {           
-            document.getElementById('day' + [i] + 'T').innerHTML = "Temp: " + dayArray[i].main.temp;         
+            document.getElementById('day' + [i] + 'T').innerHTML = "Temp: " + dayArray[i].main.temp + '\u00B0' + ' F';         
           }
 
           for (i = 0; i < dayArray.length; i++) {            
