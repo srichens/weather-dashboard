@@ -62,14 +62,38 @@ function formSubmitCity (event) {
         console.log(response);
         response.json().then(function (data) {
           console.log(data);
-          console.log(data.list[7].dt_txt);
+          let dayOne = data.list[7];
+          let dayTwo = data.list[15];
+          let dayThree = data.list[23];
+          let dayFour = data.list[31];
+          let dayFive = data.list[39];
+          let dayArray = [dayOne, dayTwo, dayThree, dayFour, dayFive];
+
+          for (i = 0; i < dayArray.length; i++) {
+            document.getElementById('day' + [i] + 'D').innerHTML = dayArray[i].dt_txt;  
+          }
+
+          for (i = 0; i < dayArray.length; i++) {           
+            document.getElementById('day' + [i] + 'T').innerHTML = "Temp: " + dayArray[i].main.temp;         
+          }
+
+          for (i = 0; i < dayArray.length; i++) {            
+            document.getElementById('day' + [i] + 'W').innerHTML = "Wind: " + dayArray[i].wind.speed;
+          }
+
+          for (i = 0; i < dayArray.length; i++) {
+            document.getElementById('day' + [i] + 'H').innerHTML = "Humidity: " + dayArray[i].main.humidity;
+          }
+
+
+          /*console.log(data.list[7].dt_txt);
           console.log(data.list[7].main.temp);
           console.log(data.list[7].wind.speed);
           console.log(data.list[7].main.humidity);
           document.getElementById('day1D').innerHTML = data.list[7].dt_txt;
           document.getElementById('day1T').innerHTML = "Temp: " + data.list[7].main.temp;
           document.getElementById('day1W').innerHTML = "Wind: " + data.list[7].wind.speed;
-          document.getElementById('day1H').innerHTML = "Humidity: " + data.list[7].main.humidity;
+          document.getElementById('day1H').innerHTML = "Humidity: " + data.list[7].main.humidity;*/
           
         });
       } else {
