@@ -5,6 +5,8 @@ let searchFormEl = document.querySelector('#search-input');
 let cityInputEl = document.querySelector('#city-input');
 let citiesListEl = document.querySelector('.cities');
 let citiesArr = [];
+let fahrenheit;
+let fahForecast;
 
 
 
@@ -42,11 +44,15 @@ function formSubmitCity (event) {
           console.log(data.main.temp);
           console.log(data.wind.speed);
           console.log(data.main.humidity);
+          fahrenheit = Math.round(((parseFloat(data.main.temp)-273.15)*1.8)+32);
+          console.log(fahrenheit);
           document.getElementById('city-select').innerHTML = data.name;
-          document.getElementById('temp-select').innerHTML = "Temp: " + data.main.temp + '\u00B0' + ' F';
+          document.getElementById('temp-select').innerHTML = "Temp: " + fahrenheit + '\u00B0' + ' F';
           document.getElementById('wind-select').innerHTML = "Wind: " + data.wind.speed;
           document.getElementById('humid-select').innerHTML = "Humidity: " + data.main.humidity;
-          //displayRepos(data, user);
+
+          
+          
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -68,13 +74,16 @@ function formSubmitCity (event) {
           let dayFour = data.list[31];
           let dayFive = data.list[39];
           let dayArray = [dayOne, dayTwo, dayThree, dayFour, dayFive];
+          
 
           for (i = 0; i < dayArray.length; i++) {
             document.getElementById('day' + [i] + 'D').innerHTML = dayArray[i].dt_txt;  
           }
 
-          for (i = 0; i < dayArray.length; i++) {           
-            document.getElementById('day' + [i] + 'T').innerHTML = "Temp: " + dayArray[i].main.temp + '\u00B0' + ' F';         
+          for (i = 0; i < dayArray.length; i++) {  
+            fahForecast = Math.round(((parseFloat(dayArray[i].main.temp)-273.15)*1.8)+32);
+            console.log(fahrenheit);         
+            document.getElementById('day' + [i] + 'T').innerHTML = "Temp: " + fahForecast + '\u00B0' + ' F';         
           }
 
           for (i = 0; i < dayArray.length; i++) {            
