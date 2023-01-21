@@ -12,30 +12,29 @@
 }
 
 h1 {
-  text-align: center;
-  border: solid chocolate;
+  text-align: center; 
   height: 25%;
   padding: 15px;
-  background-color: rgb(90, 90, 189);
+  /*background-color: rgb(64, 64, 166);*/
+  background-image: linear-gradient(to right, lightblue, darkblue);
   color: white;
+  
 }
 
 .container {
-  display: flex;  
-  border: solid crimson;
+  display: flex;    
 }
+
+
 
 .weather-output {
   display: flex;
-  border: solid rgb(72, 215, 244);
   flex-direction: column;
   width: 85%;
 }
 
 .search {
   flex-direction: column;
-  /*box-sizing: content-box;*/
-  border: solid blue;
   display: block;
   text-align: center;
   width: 15%;
@@ -43,9 +42,13 @@ h1 {
   margin: 5px;
 }
 
+.search-head {
+  text-align: left;
+  padding: 10px;
+}
+
 .cities {
   flex-direction: column;
-  border: solid rgb(30, 255, 0);
   justify-content: center;  
   margin: 5px;  
   
@@ -53,46 +56,57 @@ h1 {
 
 .search-form {
   flex-direction: column;
-  border: solid rgb(30, 255, 0);
   justify-content: center;
   margin: 5px;  
 }
 
-button, .city-search {
+.city-search {
   display: block;
-  width: 100%;
-  
+  width: 100%;  
   margin: 5px 0;  
   padding: 10px;
 }
 
+button {
+  display: block;
+  width: 100%;  
+  margin: 5px 0;  
+  padding: 10px;
+  background-color: lightgray;
+  border-color: lightgray;
+  font-weight: bold;
+}
+
+.sbmt-btn {
+  background-color: rgb(93, 143, 230);
+  border-color: rgb(99, 151, 240);
+  color: white;
+  font-weight: bold;  
+}
+
 .current-city {
   display: flex;  
+  border: solid black;
   flex-direction: column;
-  /*align-items: flex-start;*/
-  border: solid rgb(212, 0, 255);
   justify-content: center;
   width: 100%;
   margin: 5px 0;  
   padding: 5px;
 }
 
-#city-select, #today-date, #icon-current {
-  border: solid rgb(240, 8, 66);
+#city-select, #today-date, #icon-current {  
   text-align: center;
   margin: 5px 0;  
   padding: 5px;
 }
 
 #cur-weath {
-  border: solid rgb(34, 194, 34);
   width: 100%;
   margin: 5px 0;  
   padding: 5px;
 }
 
 .curr-head{
-  border: solid rgb(215, 205, 15);
   display: flex;
   flex-wrap: wrap; 
   width: 100%;
@@ -101,12 +115,13 @@ button, .city-search {
 }
 
 #fore-head {
-  padding-left: 20px;
-
+  padding-left: 10px;
+  
 }
+
 .forecast {
   flex-direction: row;
-  border: solid rgb(255, 140, 0);
+  /*border: solid blue;*/
   justify-content: center;
   width: 100%;
   margin: 5px 0;
@@ -115,20 +130,21 @@ button, .city-search {
 
 .days {
   display: flex;
-  border: solid rgb(255, 0, 183);
-  justify-content: center;
+  justify-content: center; 
   width: 100%;
-  margin: 5px 0; 
+  /*margin: 5px 0; */
 }
 
 
 .day-block {
   flex-direction: row;
-  border: solid rgb(102, 255, 0);
+  border: solid darkblue;
+  background-color: rgb(63, 63, 92);  
+  color: white;
   justify-content: center;
   width: 100%;
   margin: 5px;
-  padding: 5px;
+  padding: 10px;
 }
 
 .fa-cloud {
@@ -153,7 +169,7 @@ button, .city-search {
 
 .fa-cloud-showers-heavy {
   color:rgb(188, 188, 211);  
-  text-shadow: 2px 2px 2px rgb(4, 72, 95);
+  text-shadow: 2px 2px 2px rgb(36, 88, 105);
 }
 
 .fa-smog {
@@ -165,8 +181,14 @@ button, .city-search {
   color:rgb(71, 67, 67); 
   text-shadow: 2px 2px 2px rgb(171, 155, 155);
 }
+@media screen and (max-width: 992px) {
+  .search-head {
+    text-align: center;
+    padding: none;
+  }
+}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .day-block, .forecast, .current-city, .days {
     flex-direction: column;
     justify-items: center;     
@@ -175,13 +197,13 @@ button, .city-search {
   } 
 }    
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .search {
     width: 50%;
   } 
 }   
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   #city-select, #today-date, #icon-current {
     width: 100%;
   }
