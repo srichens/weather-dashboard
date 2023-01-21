@@ -19,7 +19,8 @@ function setWeather(){
 
   .then(function (response) {
     if (response.ok) {      
-      response.json().then(function (data) {        
+      response.json().then(function (data) {       
+        console.log(data); 
         fahrenheit = Math.round(((parseFloat(data.main.temp)-273.15)*1.8)+32);        
         document.getElementById('city-select').innerHTML = data.name;
         document.getElementById('temp-select').innerHTML = "Temp: " + fahrenheit + '\u00B0' + ' F';

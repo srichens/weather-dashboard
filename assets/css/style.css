@@ -3,6 +3,13 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
 
 h1 {
   text-align: center;
@@ -71,7 +78,7 @@ button, .city-search {
   padding: 5px;
 }
 
-#city-select, #today-date {
+#city-select, #today-date, #icon-current {
   border: solid rgb(240, 8, 66);
   text-align: center;
   margin: 5px 0;  
