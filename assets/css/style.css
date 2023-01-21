@@ -21,7 +21,7 @@ h1 {
 }
 
 .container {
-  display: flex;
+  display: flex;  
   border: solid crimson;
 }
 
@@ -39,7 +39,7 @@ h1 {
   display: block;
   text-align: center;
   width: 15%;
-  height: 600px;
+  height: 100%;
   margin: 5px;
 }
 
@@ -95,7 +95,14 @@ button, .city-search {
   border: solid rgb(215, 205, 15);
   display: flex;
   flex-wrap: wrap; 
-  width: 100%
+  width: 100%;
+  margin: 5px 0;  
+  padding: 5px;
+}
+
+#fore-head {
+  padding-left: 20px;
+
 }
 .forecast {
   flex-direction: row;
@@ -114,9 +121,6 @@ button, .city-search {
   margin: 5px 0; 
 }
 
-h3 {
-  line-height: 1%;
-}
 
 .day-block {
   flex-direction: row;
@@ -176,3 +180,27 @@ h3 {
     width: 50%;
   } 
 }   
+
+@media screen and (max-width: 768px) {
+  #city-select, #today-date, #icon-current {
+    width: 100%;
+  }
+}   
+
+@media screen and (max-width: 576px) {
+  .container {
+    flex-direction: column;
+  }
+  }
+
+@media screen and (max-width: 576px) {
+  .search, .weather-output {
+    width: 100%;
+    flex-direction: column;
+    justify-items: center;     
+    text-align: center;
+    flex-wrap: wrap;
+  } 
+}   
+
+

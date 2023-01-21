@@ -10,36 +10,32 @@
   <link rel="stylesheet" href="assets/css/style.css" />  
   <title>Weather Dashboard</title>
 </head>
+
 <body>
+
   <header>
     <h1>Weather Dashboard</h1>
   </header>
 
-  <main class="container my-auto">    
-    <section class="search">  
+  <main class="container my-auto">   
 
+    <section class="search">  
+      
       <h2>Search for a City:</h2>
       <form id="search-input" class="search-form">       
         <input type="text" name="city" placeholder="e.g.: Minneapolis" id="city-input" class="city-search" />
         <button type="submit" class="sbmt-btn">Search</button> 
       </form>    
    
-      <section class="cities">
-        <!--<button>Atlanta</button>
-        <button>Denver</button>
-        <button>Seattle</button>
-        <button>San Francisco</button>
-        <button>Orlando</button>
-        <button>New York</button>
-        <button>Chicago</button>
-        <button>Austin</button> -->
-      </section>
+      <section class="cities">       
+      </section>    
 
     </section>
 
     <section class="weather-output">
 
       <section class="current-city">
+
         <header class="curr-head">
           <h2 id="city-select" >[City]</h2> 
           <h2 id="today-date" >[Date]</h2>
@@ -47,17 +43,18 @@
             <i id="curr-icon"></i>
           </h2>                  
         </header>
-        <section id="cur-weath">
-         
+
+        <section id="cur-weath">         
           <p id="temp-select">Temp:</p>
           <p id="wind-select">Wind:</p>
           <p id="humid-select">Humidity:</p>
         </section>
+
       </section>
 
       <section class="forecast">    
         <section>
-          <h3>5-Day Forecast:</h3>
+          <h3 id="fore-head">5-Day Forecast:</h3>
         </section>  
 
         <section class="days">          
