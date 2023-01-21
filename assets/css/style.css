@@ -80,7 +80,7 @@ button, .city-search {
 
 #cur-weath {
   border: solid rgb(34, 194, 34);
-  width: 50%;
+  width: 100%;
   margin: 5px 0;  
   padding: 5px;
 }
@@ -89,7 +89,7 @@ button, .city-search {
   border: solid rgb(215, 205, 15);
   display: flex;
   flex-wrap: wrap; 
-  width: 50%
+  width: 100%
 }
 .forecast {
   flex-direction: row;
