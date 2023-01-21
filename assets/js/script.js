@@ -25,7 +25,28 @@ function setWeather(){
         document.getElementById('city-select').innerHTML = data.name;
         document.getElementById('temp-select').innerHTML = "Temp: " + fahrenheit + '\u00B0' + ' F';
         document.getElementById('wind-select').innerHTML = "Wind: " + data.wind.speed + ' mph';
-        document.getElementById('humid-select').innerHTML = "Humidity: " + data.main.humidity + '%';          
+        document.getElementById('humid-select').innerHTML = "Humidity: " + data.main.humidity + '%';
+        let iconWeather = data.weather[0].main;
+       
+       document.getElementById('icon').innerHTML = iconWeather;
+       console.log(iconWeather);
+      
+
+       
+        //console.log(iconEl.innerText);        
+        //console.log(data.name);
+        //console.log(data.weather[0].main);
+
+       /* addIcon();
+        function addIcon () {
+        let iconWeather = data.weather[0].main;
+        if (iconWeather == "Mist"){iconEl.addClass("fa-solid fa-cloud");}
+        else return;
+
+        }*/
+
+
+
       });
     } else {
       alert('Error: ' + response.statusText);
