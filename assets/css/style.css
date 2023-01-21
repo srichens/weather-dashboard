@@ -32,7 +32,6 @@ h1 {
   width: 85%;
 }
 
-
 .search {
   flex-direction: column;
   /*box-sizing: content-box;*/
@@ -122,6 +121,41 @@ button, .city-search {
   width: 100%;
   margin: 5px;
   padding: 5px;
+}
+
+.fa-cloud {
+  color:rgb(168, 160, 160); 
+  text-shadow: 3px 3px 3px rgb(79, 76, 76);
+}
+
+.fa-sun {
+  color: orange; 
+  text-shadow: 1px 1px 1px red;
+}
+
+.fa-snowflake {
+  color:rgb(114, 142, 210); 
+  text-shadow: 1px 1px 1px darkblue;
+}
+
+.fa-cloud-bolt {
+  color:rgb(88, 36, 125); 
+  text-shadow: 2px 2px 2px rgb(180, 162, 195);
+}
+
+.fa-cloud-showers-heavy {
+  color:rgb(188, 188, 211);  
+  text-shadow: 2px 2px 2px rgb(4, 72, 95);
+}
+
+.fa-smog {
+  color:rgba(255, 255, 255, 0.743);  
+  text-shadow: 1px 1px 1px rgb(10, 57, 73);
+}
+
+.fa-tornado {
+  color:rgb(71, 67, 67); 
+  text-shadow: 2px 2px 2px rgb(171, 155, 155);
 }
 
 @media screen and (max-width: 768px) {

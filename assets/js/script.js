@@ -10,9 +10,12 @@ let citiesArr = [];
 let fahrenheit;
 let fahForecast;
 let city = "Minneapolis";
+let iconWeather;
+let iconAdd;
 
 setWeather();
 function setWeather(){
+  
   let defaultQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
   fetch(defaultQueryURL)
@@ -26,26 +29,50 @@ function setWeather(){
         document.getElementById('temp-select').innerHTML = "Temp: " + fahrenheit + '\u00B0' + ' F';
         document.getElementById('wind-select').innerHTML = "Wind: " + data.wind.speed + ' mph';
         document.getElementById('humid-select').innerHTML = "Humidity: " + data.main.humidity + '%';
-        let iconWeather = data.weather[0].main;
        
-       document.getElementById('icon').innerHTML = iconWeather;
+
+        addIcon ();
+
+        function addIcon() {
+       
+
+       let iconWeather = data.weather[0].main;
+
+       //let iconHeader = document.getElementById('icon-current');       
        console.log(iconWeather);
       
+       //let iconAdd = document.querySelector('i');
 
+       let iconAdd = document.getElementById('curr-icon');
        
-        //console.log(iconEl.innerText);        
-        //console.log(data.name);
-        //console.log(data.weather[0].main);
 
-       /* addIcon();
-        function addIcon () {
-        let iconWeather = data.weather[0].main;
-        if (iconWeather == "Mist"){iconEl.addClass("fa-solid fa-cloud");}
-        else return;
+       if (iconWeather == 'Clouds') {console.log("The weather is Clouds.")
+       
+       iconAdd.classList = "fa-solid fa-cloud";
+       
+       } else if (iconWeather == 'Clear') {console.log("The weather is Clear.")
+       
+       iconAdd.classList = "fa-solid fa-sun";       
 
-        }*/
+      } else if (iconWeather == 'Snow') {console.log("The weather is Snow.")
+       
+      iconAdd.classList = "fa-solid fa-snowflake";   
 
+    } else if (iconWeather == 'Rain' || iconWeather =='Drizzle') {console.log("The weather is Rain or Drizzle.")
+       
+    iconAdd.classList = "fa-solid fa-cloud-showers-heavy";   
 
+  } else if (iconWeather == 'Thunderstorm') {console.log("The weather is Thunderstorm.")
+       
+  iconAdd.classList = "fa-solid fa-cloud-bolt";  
+
+} else if (iconWeather == 'Tornado') {console.log("The weather is Tornado.")
+       
+iconAdd.classList = "fa-solid fa-tornado"; }
+else {console.log("the weather is some sort of fog or smoke or haze");
+iconAdd.classList = "fa-solid fa-smog";}
+
+      }     
 
       });
     } else {
@@ -78,11 +105,77 @@ function setWeather(){
 
         for (i = 0; i < dayArray.length; i++) {
           document.getElementById('day' + [i] + 'H').innerHTML = "Humidity: " + dayArray[i].main.humidity + '%';
-        }        
+        }     
+        
+        for (i = 0; i <dayArray.length; i++) {
+          if (dayArray[i].weather[0].main == 'Clouds') {
+            console.log("The weather is Clouds.");
+            document.getElementById('day' + [i] + 'I').classList = "fa-solid fa-cloud";
+          } else if (dayArray[i].weather[0].main == 'Clear') {
+            console.log("The weather is Clear.");
+            document.getElementById('day' + [i] + 'I').classList ="fa-solid fa-sun";
+          } else if (dayArray[i].weather[0].main ==  'Snow') {
+            console.log("The weather is Snow."); 
+            document.getElementById('day' + [i] + 'I').classList = "fa-solid fa-snowflake";
+          } else if (dayArray[i].weather[0].main == 'Rain' || dayArray[i].weather[0].main == 'Drizzle') {
+            console.log("The weather is Rain or Drizzle.");
+            document.getElementById('day' + [i] + 'I').classList = "fa-solid fa-cloud-showers-heavy";
+          } else if (dayArray[i].weather[0].main ==  'Thunderstorm') {
+            console.log("The weather is Thunderstorm.");
+            document.getElementById('day' + [i] + 'I').classList = "fa-solid fa-cloud-bolt";
+          } else if (dayArray[i].weather[0].main == 'Tornado') {
+            console.log("The weather is Tornado.");
+            document.getElementById('day' + [i] + 'I').classList = "fa-solid fa-tornado";
+          } else {console.log("the weather is some sort of fog or smoke or haze");
+          document.getElementById('day' + [i] + 'I').classList = "fa-solid fa-smog";
+        }
+     
+       /* addForecastIcon ();
+
+    function addForecastIcon() {
+   
+
+   //let iconWeather = data.weather[0].main;
+
+       
+   //console.log(iconWeather);
+  
+   let iconAdd = document.querySelector('i');
+   
+
+   if (iconWeather == 'Clouds') {console.log("The weather is Clouds.")
+   
+   iconAdd.classList = "fa-solid fa-cloud";
+   
+   } else if (iconWeather == 'Clear') {console.log("The weather is Clear.")
+   
+   iconAdd.classList = "fa-solid fa-sun";       
+
+  } else if (iconWeather == 'Snow') {console.log("The weather is Snow.")
+   
+  iconAdd.classList = "fa-solid fa-snowflake";   
+
+} else if (iconWeather == 'Rain' || 'Drizzle') {console.log("The weather is Rain or Drizzle.")
+   
+iconAdd.classList = "fa-solid fa-cloud-showers-heavy";   
+
+} else if (iconWeather == 'Thunderstorm') {console.log("The weather is Thunderstorm.")
+   
+iconAdd.classList = "fa-solid fa-cloud-bolt";  
+
+} else if (iconWeather == 'Tornado') {console.log("The weather is Tornado.")
+   
+iconAdd.classList = "fa-solid fa-tornado"; }
+else {console.log("the weather is some sort of fog or smoke or haze");
+iconAdd.classList = "fa-solid fa-smog";}*/
+
+  }
+       
       });
     } else {
       alert('Error: ' + response.statusText);
     }
+    
   });     
 };       
 
