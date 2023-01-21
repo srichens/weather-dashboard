@@ -117,6 +117,65 @@ function formSubmitCity (event) {
       let buttonCity = ($(this).attr('id'));
       console.log(buttonCity);
       console.log(typeof buttonCity);
+
+      let queryButtonURL = "http://api.openweathermap.org/data/2.5/weather?q=" + buttonCity + "&appid=" + APIKey;
+
+  fetch(queryButtonURL)
+
+  .then(function (response) {
+    if (response.ok) {
+      //console.log(response);
+      response.json().then(function (data) {
+        //console.log(data);
+        //console.log(data.main.temp);
+        //console.log(data.wind.speed);
+        //console.log(data.main.humidity);
+        fahrenheit = Math.round(((parseFloat(data.main.temp)-273.15)*1.8)+32);
+        //console.log(fahrenheit);
+        document.getElementById('city-select').innerHTML = data.name;
+        document.getElementById('temp-select').innerHTML = "Temp: " + fahrenheit + '\u00B0' + ' F';
+        document.getElementById('wind-select').innerHTML = "Wind: " + data.wind.speed + ' mph';
+        document.getElementById('humid-select').innerHTML = "Humidity: " + data.main.humidity + '%';          
+      });
+    } else {
+      alert('Error: ' + response.statusText);
+    }
+  });
+   
+  let forecastButtonURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + buttonCity + "&appid=" + APIKey;
+
+  fetch(forecastButtonURL)
+
+  .then(function (response) {
+    if (response.ok) {
+      //console.log(response);
+      response.json().then(function (data) {
+        //console.log(data);
+        let dayOne = data.list[7];
+        let dayTwo = data.list[15];
+        let dayThree = data.list[23];
+        let dayFour = data.list[31];
+        let dayFive = data.list[39];
+        let dayArray = [dayOne, dayTwo, dayThree, dayFour, dayFive];
+        
+        for (i = 0; i < dayArray.length; i++) {  
+          fahForecast = Math.round(((parseFloat(dayArray[i].main.temp)-273.15)*1.8)+32);
+          //console.log(fahrenheit);         
+          document.getElementById('day' + [i] + 'T').innerHTML = "Temp: " + fahForecast + '\u00B0' + ' F';         
+        }
+
+        for (i = 0; i < dayArray.length; i++) {            
+          document.getElementById('day' + [i] + 'W').innerHTML = "Wind: " + dayArray[i].wind.speed + ' mph';
+        }
+
+        for (i = 0; i < dayArray.length; i++) {
+          document.getElementById('day' + [i] + 'H').innerHTML = "Humidity: " + dayArray[i].main.humidity + '%';
+        }        
+      });
+    } else {
+      alert('Error: ' + response.statusText);
+    }
+   });     
     }
     
 
