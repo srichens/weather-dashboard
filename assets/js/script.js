@@ -67,29 +67,62 @@ function formSubmitCity (event) {
   console.log(searchCity);
    
   if (searchCity) {cityInputEl.value = "";
-    let savedCity = {
-      city: searchCity,
-      id: searchCity
-    };
+    //let savedCity = {
+      //city: searchCity
+      //id: searchCity
+   // };
 
-    localStorage.setItem("savedCity", JSON.stringify(savedCity));
-    let newCity = JSON.parse(localStorage.getItem("savedCity"));
+    //localStorage.setItem("savedCity", JSON.stringify(savedCity));
+    localStorage.setItem("savedCity", searchCity);
+
+    
+    //let newCity = JSON.parse(localStorage.getItem("savedCity"));
+    let newCity = localStorage.getItem("savedCity");
     console.log(newCity);
 
     citiesArr.push(newCity);
     console.log(citiesArr);
-    localStorage.setItem("allCitiesSearch", citiesArr);
+    localStorage.setItem("allCities", JSON.stringify(citiesArr));
+    let newCityArr = JSON.parse(localStorage.getItem("allCities"));
+    console.log(newCityArr);
+    console.log(newCityArr[0]);
    
+    
     let cityButton = document.createElement("button");
-    cityButton.setAttribute("id", newCity.id);
+    let cityBtnText = document.createTextNode(newCity);
     cityButton.setAttribute("class", "new-city-button")
-    let cityBtnText = document.createTextNode(newCity.city);
+
+    for (i = 0; i < newCityArr.length; i++) {
+   
+    cityButton.setAttribute("id", newCityArr[i]);       
+   
+    };
+    
+    
+    /*let cityBtnText = document.createTextNode(newCity);
+    cityButton.setAttribute("id", newCity);
+    cityButton.setAttribute("class", "new-city-button")*/
 
     cityButton.appendChild(cityBtnText);
           
     citiesListEl.appendChild(cityButton);
 
-    let cityButtonEl = $('.new-city-button');
+    //let mSEl =  document.getElementById('Minneapolis');
+    //console.log(mSEl.textContent);
+
+    let newCityButtonEl = $('.new-city-button');
+    newCityButtonEl.on('click', renderButtonWeather);
+
+    function renderButtonWeather () {
+      let buttonCity = ($(this).attr('id'));
+      console.log(buttonCity);
+      console.log(typeof buttonCity);
+    }
+    
+
+    //for (i = 0; i < )
+
+    /*let cityButtonEl = $('.new-city-button');
 
     cityButtonEl.on('click', savedCityWeather);
 
@@ -98,7 +131,7 @@ function formSubmitCity (event) {
       let buttonCity = ($(this).attr('id'));
       console.log(buttonCity);
     })
-    }
+    }*/
   };
 
   
@@ -165,7 +198,25 @@ function formSubmitCity (event) {
    
   };
 
-  let testCity = JSON.parse(localStorage.getItem("savedCity"));
+  /*newCity = JSON.parse(localStorage.getItem("savedCity"));
+  console.log(newCity);
+
+  citiesArr.push(newCity);
+  console.log(citiesArr);
+  localStorage.setItem("allCitiesSearch", citiesArr);
+ 
+  function createButton() {
+  let cityButton = document.createElement("button");
+  cityButton.setAttribute("id", newCity.id);
+  cityButton.setAttribute("class", "new-city-button")
+  let cityBtnText = document.createTextNode(newCity.city);
+
+  cityButton.appendChild(cityBtnText);
+        
+  citiesListEl.appendChild(cityButton);
+  };*/
+
+  /*let testCity = JSON.parse(localStorage.getItem("savedCity"));
   if (testCity!== null) {
 console.log(testCity)
-  };
+  };*/
