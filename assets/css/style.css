@@ -14,23 +14,13 @@
 h1 {
   text-align: center; 
   height: 25%;
-  padding: 15px;
-  /*background-color: rgb(64, 64, 166);*/
+  padding: 15px;  
   background-image: linear-gradient(to right, lightblue, darkblue);
-  color: white;
-  
+  color: white;  
 }
 
 .container {
   display: flex;    
-}
-
-
-
-.weather-output {
-  display: flex;
-  flex-direction: column;
-  width: 85%;
 }
 
 .search {
@@ -45,13 +35,6 @@ h1 {
 .search-head {
   text-align: left;
   padding: 10px;
-}
-
-.cities {
-  flex-direction: column;
-  justify-content: center;  
-  margin: 5px;  
-  
 }
 
 .search-form {
@@ -84,11 +67,31 @@ button {
   font-weight: bold;  
 }
 
+.cities {
+  flex-direction: column;
+  justify-content: center;  
+  margin: 5px;    
+}
+
+.weather-output {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
 .current-city {
   display: flex;  
   border: solid black;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  margin: 5px 0;  
+  padding: 5px;
+}
+
+.curr-head{
+  display: flex;
+  flex-wrap: wrap; 
   width: 100%;
   margin: 5px 0;  
   padding: 5px;
@@ -106,19 +109,6 @@ button {
   padding: 5px;
 }
 
-.curr-head{
-  display: flex;
-  flex-wrap: wrap; 
-  width: 100%;
-  margin: 5px 0;  
-  padding: 5px;
-}
-
-#fore-head {
-  padding-left: 10px;
-  
-}
-
 .forecast {
   flex-direction: row;
   /*border: solid blue;*/
@@ -128,11 +118,14 @@ button {
   padding: 5px;
 }
 
+#fore-head {
+  padding-left: 10px;  
+}
+
 .days {
   display: flex;
   justify-content: center; 
-  width: 100%;
-  /*margin: 5px 0; */
+  width: 100%;  
 }
 
 
@@ -181,6 +174,7 @@ button {
   color:rgb(71, 67, 67); 
   text-shadow: 2px 2px 2px rgb(171, 155, 155);
 }
+
 @media screen and (max-width: 992px) {
   .search-head {
     text-align: center;
