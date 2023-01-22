@@ -70,7 +70,8 @@ button {
 .cities {
   flex-direction: column;
   justify-content: center;  
-  margin: 5px;    
+  margin: 5px;   
+  border-top: solid lightgray; 
 }
 
 .weather-output {
