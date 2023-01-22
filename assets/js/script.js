@@ -1,6 +1,10 @@
 let APIKey = "9d7113f3af5d25571785a917bd91f773";
+// I set the default city to Minneapolis when the page is loaded, 
+// so that a city shows up right away without having to use a location service
 let city = "Minneapolis";
+// this variable will hold the converted temp from the weather api data
 let fahrenheit;
+//I added fonts from Font Weather that had cute weather icons
 let iconWeather;
 let iconAdd;
 let fahForecast;
@@ -13,9 +17,13 @@ let citiesListEl = document.querySelector('.cities');
 let buttonCity;
 
 let today = dayjs();
-
+// I used jquery here, since that is what we used with dayjs in class
 $('#today-date').text('(' + today.format('MMM D, YYYY') + ')');
 
+//I really wanted to get the forecast dates into some sort of loop, but it ended up being too complicated
+//This just takes the current date and adds the appropriate number of days for each day block
+//I searched and found the new Date()/setDate/getDate method, but that had all time and date data, so had to
+//convert the format with the Intl.DateTimeFormat, which I also found my a google search - we did not go over it in class
 let d0 = new Date(today);
 d0.setDate(d0.getDate() + 1);
 let dateFormat0 = new Date(d0);
@@ -49,8 +57,12 @@ for (i = 0; i < nextDayArr.length; i++) {
 
 setWeather();
 
+// this function pulls the weather from  Open Weather Map, which we were instructed to use
+// I followed the format from a function we used in class.
+
 function setWeather(){
   
+  // This first url fetches the current weather and puts it in the header
   let defaultQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
   fetch(defaultQueryURL)
@@ -59,6 +71,7 @@ function setWeather(){
     if (response.ok) {      
       response.json().then(function (data) {       
         console.log(data); 
+        //targets the corresponding elements in the html paragraphs to render the weather data with conversions where needed
         fahrenheit = Math.round(((parseFloat(data.main.temp)-273.15)*1.8)+32);        
         document.getElementById('city-select').innerHTML = data.name;
         document.getElementById('temp-select').innerHTML = "Temp: " + fahrenheit + '\u00B0' + ' F';
@@ -67,6 +80,8 @@ function setWeather(){
        
         addIcon ();
 
+        //this function adds an icon that corresponds to the weather conditions; I used Font Awesome icons and added color and
+        //shading to make them more interesting.
         function addIcon() {
           iconWeather = data.weather[0].main;       
 
@@ -101,13 +116,16 @@ function setWeather(){
     }
   });
   
+  // this is a different url from Open Weather that is just a five day forecast
+  // I was able to figure out loops to get all the weather info in the day blocks   
   let defaultForecastURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
 
   fetch(defaultForecastURL)
-
+  
   .then(function (response) {
     if (response.ok) {      
       response.json().then(function (data) {       
+        // The forecast data included eight hours for each day. I chose the eighth hour, since it had the highest temp of the day
         let dayOne = data.list[7];
         let dayTwo = data.list[15];
         let dayThree = data.list[23];
@@ -160,6 +178,7 @@ function setWeather(){
   });     
 };       
 
+// This is the event listener for the search button when entering a city you want the weather for
 searchFormEl.addEventListener('submit', formSubmitCity)
 
 function formSubmitCity (event) {
@@ -167,7 +186,9 @@ function formSubmitCity (event) {
      
   searchCity = cityInputEl.value.trim();  
   console.log(searchCity);
-   
+  
+  // this saves the search input into local storage so there is a search history.
+  // each searched city is turned into a button that is appended below the search button
   if (searchCity) {cityInputEl.value = "";    
     localStorage.setItem("savedCity", searchCity);
     newCity = localStorage.getItem("savedCity");    
@@ -191,6 +212,9 @@ function formSubmitCity (event) {
     let newCityButtonEl = $('.new-city-button');
     newCityButtonEl.on('click', renderButtonWeather);
 
+    // the cities in the search history needed to be buttons that could render their weather again when clicked;
+    // this function does that  - I set the city name as the button's ID, so that is pulled and set as the city and pushed
+    // back into the set weather function
     function renderButtonWeather () {
       buttonCity = ($(this).attr('id'));
       console.log(buttonCity);
@@ -201,6 +225,7 @@ function formSubmitCity (event) {
     };
   };
 
+  // this takes the initial search input and sets the weather for that city
   city = searchCity;
   setWeather();   
 
