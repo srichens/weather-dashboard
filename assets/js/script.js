@@ -1,19 +1,54 @@
 let APIKey = "9d7113f3af5d25571785a917bd91f773";
-let searchCity;
-let buttonCity;
-let savedCity;
-let newCity;
-let searchFormEl = document.querySelector('#search-input');
-let cityInputEl = document.querySelector('#city-input');
-let citiesListEl = document.querySelector('.cities');
-let citiesArr = [];
-let fahrenheit;
-let fahForecast;
 let city = "Minneapolis";
+let fahrenheit;
 let iconWeather;
 let iconAdd;
+let fahForecast;
+let searchFormEl = document.querySelector('#search-input');
+let cityInputEl = document.querySelector('#city-input');
+let searchCity;
+let newCity;
+let citiesArr = [];
+let citiesListEl = document.querySelector('.cities');
+let buttonCity;
+
+let today = dayjs();
+
+$('#today-date').text('(' + today.format('MMM D, YYYY') + ')');
+
+let d0 = new Date(today);
+d0.setDate(d0.getDate() + 1);
+let dateFormat0 = new Date(d0);
+let day0 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat0);
+
+let d1 = new Date(today);
+d1.setDate(d1.getDate() + 2);
+let dateFormat1 = new Date(d1);
+let day1 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat1);
+
+let d2 = new Date(today);
+d2.setDate(d2.getDate() + 3);
+let dateFormat2 = new Date(d2);
+let day2 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat2);
+
+let d3 = new Date(today);
+d3.setDate(d3.getDate() + 4);
+let dateFormat3 = new Date(d3);
+let day3 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat3);
+
+let d4 = new Date(today);
+d4.setDate(d4.getDate() + 5);
+let dateFormat4 = new Date(d4);
+let day4 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat4);
+
+let nextDayArr = [day0, day1, day2, day3, day4];
+
+for (i = 0; i < nextDayArr.length; i++) {
+  document.getElementById('day' + [i] + 'D').innerHTML = nextDayArr[i];  
+}
 
 setWeather();
+
 function setWeather(){
   
   let defaultQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
@@ -30,50 +65,36 @@ function setWeather(){
         document.getElementById('wind-select').innerHTML = "Wind: " + data.wind.speed + ' mph';
         document.getElementById('humid-select').innerHTML = "Humidity: " + data.main.humidity + '%';
        
-
         addIcon ();
 
         function addIcon() {
-       
+          iconWeather = data.weather[0].main;       
 
-       let iconWeather = data.weather[0].main;
-
-       //let iconHeader = document.getElementById('icon-current');       
-       console.log(iconWeather);
+          iconAdd = document.getElementById('curr-icon');
       
-       //let iconAdd = document.querySelector('i');
-
-       let iconAdd = document.getElementById('curr-icon');
-       
-
-       if (iconWeather == 'Clouds') {console.log("The weather is Clouds.")
-       
-       iconAdd.classList = "fa-solid fa-cloud";
-       
-       } else if (iconWeather == 'Clear') {console.log("The weather is Clear.")
-       
-       iconAdd.classList = "fa-solid fa-sun";       
-
-      } else if (iconWeather == 'Snow') {console.log("The weather is Snow.")
-       
-      iconAdd.classList = "fa-solid fa-snowflake";   
-
-    } else if (iconWeather == 'Rain' || iconWeather =='Drizzle') {console.log("The weather is Rain or Drizzle.")
-       
-    iconAdd.classList = "fa-solid fa-cloud-showers-heavy";   
-
-  } else if (iconWeather == 'Thunderstorm') {console.log("The weather is Thunderstorm.")
-       
-  iconAdd.classList = "fa-solid fa-cloud-bolt";  
-
-} else if (iconWeather == 'Tornado') {console.log("The weather is Tornado.")
-       
-iconAdd.classList = "fa-solid fa-tornado"; }
-else {console.log("the weather is some sort of fog or smoke or haze");
-iconAdd.classList = "fa-solid fa-smog";}
-
-      }     
-
+          if (iconWeather == 'Clouds') {
+            console.log("The weather is Clouds.");
+            iconAdd.classList = "fa-solid fa-cloud";
+          } else if (iconWeather == 'Clear') {
+            console.log("The weather is Clear."); 
+            iconAdd.classList = "fa-solid fa-sun";
+          } else if (iconWeather == 'Snow') {
+            console.log("The weather is Snow.");
+            iconAdd.classList = "fa-solid fa-snowflake"; 
+          } else if (iconWeather == 'Rain' || iconWeather =='Drizzle') {
+            console.log("The weather is Rain or Drizzle.");
+            iconAdd.classList = "fa-solid fa-cloud-showers-heavy";
+          } else if (iconWeather == 'Thunderstorm') {
+            console.log("The weather is Thunderstorm."); 
+            iconAdd.classList = "fa-solid fa-cloud-bolt";
+          } else if (iconWeather == 'Tornado') {
+            console.log("The weather is Tornado.");
+            iconAdd.classList = "fa-solid fa-tornado"; 
+          } else {
+            console.log("the weather is some sort of fog or smoke or haze"); 
+            iconAdd.classList = "fa-solid fa-smog";
+          }
+        }     
       });
     } else {
       alert('Error: ' + response.statusText);
@@ -126,94 +147,18 @@ iconAdd.classList = "fa-solid fa-smog";}
           } else if (dayArray[i].weather[0].main == 'Tornado') {
             console.log("The weather is Tornado.");
             document.getElementById('day' + [i] + 'I').classList = "fa-solid fa-tornado";
-          } else {console.log("the weather is some sort of fog or smoke or haze");
-          document.getElementById('day' + [i] + 'I').classList = "fa-solid fa-smog";
+          } else {
+            console.log("the weather is some sort of fog or smoke or haze");
+            document.getElementById('day' + [i] + 'I').classList = "fa-solid fa-smog";
+          } 
         }
-     
-       /* addForecastIcon ();
-
-    function addForecastIcon() {
-   
-
-   //let iconWeather = data.weather[0].main;
-
-       
-   //console.log(iconWeather);
-  
-   let iconAdd = document.querySelector('i');
-   
-
-   if (iconWeather == 'Clouds') {console.log("The weather is Clouds.")
-   
-   iconAdd.classList = "fa-solid fa-cloud";
-   
-   } else if (iconWeather == 'Clear') {console.log("The weather is Clear.")
-   
-   iconAdd.classList = "fa-solid fa-sun";       
-
-  } else if (iconWeather == 'Snow') {console.log("The weather is Snow.")
-   
-  iconAdd.classList = "fa-solid fa-snowflake";   
-
-} else if (iconWeather == 'Rain' || 'Drizzle') {console.log("The weather is Rain or Drizzle.")
-   
-iconAdd.classList = "fa-solid fa-cloud-showers-heavy";   
-
-} else if (iconWeather == 'Thunderstorm') {console.log("The weather is Thunderstorm.")
-   
-iconAdd.classList = "fa-solid fa-cloud-bolt";  
-
-} else if (iconWeather == 'Tornado') {console.log("The weather is Tornado.")
-   
-iconAdd.classList = "fa-solid fa-tornado"; }
-else {console.log("the weather is some sort of fog or smoke or haze");
-iconAdd.classList = "fa-solid fa-smog";}*/
-
-  }
        
       });
     } else {
       alert('Error: ' + response.statusText);
-    }
-    
+    }    
   });     
 };       
-
-
-let today = dayjs();
-
-$('#today-date').text('(' + today.format('MMM D, YYYY') + ')');
-
-let d0 = new Date(today);
-d0.setDate(d0.getDate() + 1);
-let dateFormat0 = new Date(d0);
-let day0 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat0);
-
-let d1 = new Date(today);
-d1.setDate(d1.getDate() + 2);
-let dateFormat1 = new Date(d1);
-let day1 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat1);
-
-let d2 = new Date(today);
-d2.setDate(d2.getDate() + 3);
-let dateFormat2 = new Date(d2);
-let day2 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat2);
-
-let d3 = new Date(today);
-d3.setDate(d3.getDate() + 4);
-let dateFormat3 = new Date(d3);
-let day3 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat3);
-
-let d4 = new Date(today);
-d4.setDate(d4.getDate() + 5);
-let dateFormat4 = new Date(d4);
-let day4 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric'}).format(dateFormat4);
-
-let nextDayArr = [day0, day1, day2, day3, day4];
-
-for (i = 0; i < nextDayArr.length; i++) {
-  document.getElementById('day' + [i] + 'D').innerHTML = nextDayArr[i];  
-}
 
 searchFormEl.addEventListener('submit', formSubmitCity)
 
@@ -225,16 +170,13 @@ function formSubmitCity (event) {
    
   if (searchCity) {cityInputEl.value = "";    
     localStorage.setItem("savedCity", searchCity);
-    let newCity = localStorage.getItem("savedCity");
-    //console.log(newCity);
+    newCity = localStorage.getItem("savedCity");    
 
     citiesArr.push(newCity);
-    //console.log(citiesArr);
+   
     localStorage.setItem("allCities", JSON.stringify(citiesArr));
     let newCityArr = JSON.parse(localStorage.getItem("allCities"));
-    //console.log(newCityArr);
-    //console.log(newCityArr[0]);   
-    
+       
     let cityButton = document.createElement("button");
     let cityBtnText = document.createTextNode(newCity);
     cityButton.setAttribute("class", "new-city-button")
@@ -250,7 +192,7 @@ function formSubmitCity (event) {
     newCityButtonEl.on('click', renderButtonWeather);
 
     function renderButtonWeather () {
-      let buttonCity = ($(this).attr('id'));
+      buttonCity = ($(this).attr('id'));
       console.log(buttonCity);
       console.log(typeof buttonCity);
 
@@ -261,6 +203,7 @@ function formSubmitCity (event) {
 
   city = searchCity;
   setWeather();   
+
 };
 
  
