@@ -63,7 +63,7 @@ setWeather();
 function setWeather(){
   
   // This first url fetches the current weather and puts it in the header
-  let defaultQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+  let defaultQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
   fetch(defaultQueryURL)
 
@@ -118,7 +118,7 @@ function setWeather(){
   
   // this is a different url from Open Weather that is just a five day forecast
   // I was able to figure out loops to get all the weather info in the day blocks   
-  let defaultForecastURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
+  let defaultForecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
 
   fetch(defaultForecastURL)
   
