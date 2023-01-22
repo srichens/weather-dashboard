@@ -27,7 +27,7 @@ Bootcamp Week 6 Challenge
 
 6. I was also proud of myself for figuring out the loops to render the data for the five forcast days. I've had trouble with loops, but one day in office hours, the TA simplified someone else's loop, and I suddenly understood it (well, I understood it better, anyway).
 
-## Things I Would Add of Fix if I Had More Time:
+## Things I Would Add or Fix if I Had More Time:
 1. I did not use the latitude/longitude URL from Open Weather. I started with just the city one, because that seemed easier, and then it seemed too complicated to change it. So I think it's just pulling up the #1 search output for each city name. So it's not specific enough. Minneapolis, MN is the only Minneapolis it's pulling up.
 
 2. If someone types in something in the wrong format in the city search (like adds a state), the button still appends with whatever was entered. The error message needs to have some sort of clear button function, but that just got too complicated for me.
